@@ -9,11 +9,11 @@ function SearchBar(props){
     
     function inputOnChange(){
         let text = searchBarInput.current.value;
-        props.changeCurrentNameField(text);
+        props.dispatch({type: 'CHANGE-CURRENT-NAME-FIELD', value: text});
     };
 
     function createCategory(){
-        props.createNewCategory();
+        props.dispatch({type: 'CREATE-NEW-CATEGORY'});
     };
 
     
@@ -23,9 +23,26 @@ function SearchBar(props){
             <form className={classes['search-bar__form']}>
                 <input className={classes['search-bar__input']} ref={searchBarInput} value={props.state.currentNameField} onChange={inputOnChange}></input>
                 <div className={classes['search-bar__buttons']}>
-                    <div><button className={`${classes['search-bar__search-button']} ${classes['search-bar__button']}`} type="button">Search</button></div>
-                    <div><NavLink to='/recipe-create'><button className={`${classes['search-bar__new-recipe-button']} ${classes['search-bar__button']}`} type="button">New recipe</button></NavLink></div>
-                    <div><button className={`${classes['search-bar__new-category-button']} ${classes['search-bar__button']}`} type="button" onClick={createCategory}>New category</button></div>
+                    <div>
+                        <button className={`${classes['search-bar__search-button']} 
+                                            ${classes['search-bar__button']}`} 
+                                type="button">Search
+                        </button>
+                    </div>
+                    <div>
+                        <NavLink to='/recipe-create'>
+                            <button className={`${classes['search-bar__new-recipe-button']} ${classes['search-bar__button']}`} 
+                                    type="button">
+                                        New recipe
+                            </button>
+                        </NavLink>
+                    </div>
+                    <div>
+                        <button className={`${classes['search-bar__new-category-button']} ${classes['search-bar__button']}`} 
+                                type="button" onClick={createCategory}>
+                                    New category
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

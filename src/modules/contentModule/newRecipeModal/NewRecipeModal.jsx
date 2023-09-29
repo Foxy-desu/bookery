@@ -5,27 +5,32 @@ function NewRecipeCreate(props) {
 
     let optionArray = props.state.allCategories.map((category, index) => {
         return (
-            <option categoryIndex={index}>{category.categoryName}</option>
+            <option categoryname={category.categoryName} categoryindex={index}>{category.categoryName}</option>
         )
     });
 
-    let nameField = React.createRef();
+    let recipeNameField = React.createRef();
     let categoryField = React.createRef();
     let recipeField = React.createRef();
 
-    const nameFieldOnChange = ()=>{
-
+    const recipeNameFieldOnChange = ()=>{
+        let text = recipeNameField.current.value;
+        props.dispatch({type:'CHANGE-CURRENT-RECIPE-NAME-FIELD', value: text});
     };
 
     const categoryFieldOnChange = ()=> {
-
+        let text = categoryField.current.value;
+        props.dispatch({type: 'CHANGE-CURRENT-CATEGORY-FIELD', value: text});
     };
 
     const recipeFieldOnChange = ()=> {
-
+        let text = recipeField.current.value;
+        props.dispatch({type: 'CHANGE-CURRENT-TEXT-FIELD', value: text});
     };
 
-
+    const createRecipe = ()=> {
+        props.dispatch({type: 'CREATE-NEW-RECIPE'});
+    };
 
     return (
 
@@ -38,24 +43,24 @@ function NewRecipeCreate(props) {
 
                     <div className={classes["name-wrap"]}>
                         <p className={classes["new-recipe__name-label"]}>Give your pretty recipe a name</p>
-                        <input ref={nameField} className={classes["new-recipe__recipe-name"]} type="text" />
+                        <input className={classes["new-recipe__recipe-name"]} ref={recipeNameField} value={props.state.currentRecipeNameField} onChange={recipeNameFieldOnChange} type="text" />
                     </div>
 
                     <div className={classes["category-wrap"]}>
                         <p className={classes["new-recipe__category-label"]}>Select the right category for it</p>
-                        <select ref={categoryField} className={classes["new-recipe__category"]}>
-                            <option disabled>Choose a category</option>
+                        <select className={classes["new-recipe__category"]} ref={categoryField} value={props.state.currentCategoryField} onChange={categoryFieldOnChange} >
+                            <option hidden>Choose a category</option>
                             {optionArray}
                         </select>
                     </div>
 
                     <div className={classes["recipe-text-wrap"]}>
                         <p className={classes["new-recipe__recipe-text-label"]}>Put it down here</p>
-                        <textarea ref={recipeField} className={classes["new-recipe__recipe-text"]} placeholder="Here is my lovely dish..."></textarea>
+                        <textarea className={classes["new-recipe__recipe-text"]} ref={recipeField} value={props.state.currentTextField} onChange={recipeFieldOnChange} placeholder="Here is my lovely dish..."></textarea>
                     </div>
 
                     <div className={classes["create-recipe-button-wrap"]}>
-                        <button className={classes["new-recipe__create-button"]}>Create a recipe</button>
+                        <button className={classes["new-recipe__create-button"]} type="button" onClick={createRecipe}>Create a recipe</button>
                     </div>
 
 

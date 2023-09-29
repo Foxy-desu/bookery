@@ -14,13 +14,9 @@ function App(props) {
         <div className="app">
           <Header/>
           <Navigation state={props.state}
-                      changeCurrentNameField={props.changeCurrentNameField}
-                      createNewCategory={props.createNewCategory}/>
+                      dispatch={props.dispatch}/>
           <Content className='main-content' state={props.state}
-                                            changeCurrentRecipeNameField={props.changeCurrentRecipeNameField}
-                                            createNewRecipe={props.createNewRecipe}
-                                            changeCurrentTextField={props.changeCurrentTextField}
-                                            changeCurrentCategoryField={props.changeCurrentCategoryField}/>
+                                            dispatch={props.dispatch}/>
           <Footer/>
         </div>
       </div>

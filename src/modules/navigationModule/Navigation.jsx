@@ -9,6 +9,7 @@ function Navigation(props) {
         <div className={classes['navigation']}>
             <div className={classes['navigation__search-bar']}>
                 <SearchBar state={props.state}
+                           dispatch={props.dispatch}
                            changeCurrentNameField={props.changeCurrentNameField}
                            createNewCategory={props.createNewCategory}/>
             </div>

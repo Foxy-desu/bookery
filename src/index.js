@@ -11,12 +11,7 @@ function rerenderEntireTree(state){
   root.render(
     <React.StrictMode>
       <App state={state}
-           changeCurrentNameField={store.changeCurrentNameField.bind(store)}
-           createNewCategory={store.createNewCategory.bind(store)}
-           changeCurrentRecipeNameField={store.changeCurrentRecipeNameField.bind(store)}
-           createNewRecipe={store.createNewRecipe.bind(store)}
-           changeCurrentTextField={store.changeCurrentTextField.bind(store)}
-           changeCurrentCategoryField={store.changeCurrentCategoryField.bind(store)}/>
+           dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>
   );
 };
