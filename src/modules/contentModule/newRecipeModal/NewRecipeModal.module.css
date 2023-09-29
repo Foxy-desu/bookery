@@ -1,0 +1,34 @@
+.new-recipe__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+
+
+}
+
+.new-recipe__title-wrap {
+    align-self: center;
+
+}
+
+.new-recipe__title-text {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+.new-recipe__recipe-info-wrap {
+
+}
+
+.new-recipe__recipe-info {
+
+}
+
+.new-recipe__recipe-photo {
+
+}
+
+

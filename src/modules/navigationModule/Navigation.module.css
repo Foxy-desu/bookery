@@ -1,0 +1,22 @@
+.navigation {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    grid-area: n;
+    background-color: #efa123;
+    padding: 25px;
+    border-right: 1px solid #ffffff;
+
+}
+
+
+
+.navigation__search-results, .navigation__search-bar, .navigation__extra-buttons{
+    width: 100%;
+}
+
+.navigation__search-results {
+    flex-grow: 1;
+    border: 1px solid #ffffff;
+    overflow: hidden;
+}

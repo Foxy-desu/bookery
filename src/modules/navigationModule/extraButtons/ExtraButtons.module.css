@@ -1,0 +1,30 @@
+
+.buttons__wrap {
+    width: 100%;
+    height: fit-content;
+    padding: 20px 0 0 0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-wrap {
+    display: block;
+}
+
+.buttons__button {
+    box-sizing: border-box;
+    display: block;
+    padding: 5px;
+    background-color: white;
+    border: 0;
+    transition: 0.1s;
+}
+
+.buttons__button:hover {
+    background-color: #ffffffa2;
+    cursor: pointer;
+}

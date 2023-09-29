@@ -1,0 +1,18 @@
+.app-wrap {
+  background-color: #1c1717;
+}
+
+.app {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 100px auto 60px;
+  grid-template-areas:
+  "h h h h"
+  "n c c c"
+  "f f f f";
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #b0a5a5;
+}

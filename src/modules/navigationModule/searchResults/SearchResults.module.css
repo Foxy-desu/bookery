@@ -1,0 +1,18 @@
+ .search-results__block {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: url(https://archziner.com/wp-content/uploads/2020/09/autumn-desktop-wallpaper-gray-background-drawings-of-pumpkins-fall-leaves-candles-berries-cappucinos.png) no-repeat center;
+    background-size: cover;
+    overflow: hidden;
+    
+ }
+
+ .earch-results__block-wrap {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 20px;
+   gap: 20px;
+
+ }

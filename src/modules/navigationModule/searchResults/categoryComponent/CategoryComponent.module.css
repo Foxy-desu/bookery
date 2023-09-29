@@ -1,0 +1,41 @@
+a {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #fff;
+}
+
+.category-component__wrap {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing:content-box;
+    justify-content: space-between;
+    
+    transition: 0.1s;
+    padding: 5px;
+    color: #0d0707;
+    text-decoration: none;
+    box-sizing:content-box;
+    background-color: rgb(255 255 255 / 0.3);
+    backdrop-filter: blur(10px);
+    
+}
+
+
+.category-component__line {
+    margin: 5px;
+}
+
+.category-component__wrap:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.066);
+    color: #fff;
+
+}

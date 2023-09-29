@@ -1,0 +1,36 @@
+.categories__wrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 15px;
+
+}
+
+.categories__manipulation-block {
+    height: 50px;
+    width: 100%;
+    background-color: bisque;
+
+}
+
+.categories__display-block {
+    box-sizing: border-box;
+    display: flex;
+    flex-grow: 1;
+    max-height: 870px;
+    width: 100%;
+    padding: 25px;
+    background-color: bisque;
+    overflow: hidden;
+    
+}
+
+.categories__category-items-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; 
+    height: fit-content;
+    justify-content: space-between;
+}

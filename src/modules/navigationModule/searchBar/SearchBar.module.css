@@ -1,0 +1,35 @@
+.search-bar {
+    padding: 25px 0 25px 0;
+}
+
+.search-bar__input {
+    width: 98%;
+    height: 2em;
+    margin: 0 0 12px 0;
+    border: 0;
+}
+
+.search-bar__input:focus-visible {
+    outline-offset: 0;
+    outline-color: rgba(146, 84, 34, 0.557);
+    
+}
+
+.search-bar__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.search-bar__button {
+    padding: 5px;
+    background-color: white;
+    border: 0;
+    transition: 0.1s;
+}
+
+.search-bar__button:hover {
+    cursor: pointer;
+    background-color: #ffffffa2;
+}

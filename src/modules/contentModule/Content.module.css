@@ -1,0 +1,7 @@
+.content {
+    box-sizing: border-box;
+    grid-area: c;
+    background-color: #efa123;
+    padding: 15px;
+    
+}
