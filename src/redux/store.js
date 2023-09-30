@@ -135,69 +135,26 @@ const store = {
         }
     },
 
-    // createNewRecipe(){
-    //     let newRecipe = {
-    //         recepieId: Number(this.state.allRecipes.length) + 1,
-    //         recipeName: this.state.currentRecipeNameField,
-    //         recipeText: this.state.currentTextField,
-    //         recipeCategory: this.state.currentCategoryField,
-    //         isFavorite: false,
-    //         thumbnail: '',
-    //         pictures: [],
-    //     };
-
-    //     this.state.allRecipes.push(newRecipe);
-    //     this.state.allCategories.forEach((category)=> {
-    //         if(category.categoryName === newRecipe.recipeCategory){
-    //             category.relatedRecipes.push(newRecipe);
-    //         }
-    //     })
-    //     this._resetCurrentFields();
-    //     this._callSubscriber(this.state);
-    // },
-
-    // createNewCategory(){
-    //     let newCategory = {
-    //         categoryId: Number(this.state.allCategories.length) + 1,
-    //         categoryName: this.state.currentNameField.trim(),
-    //         relatedRecipes: [],
-    //         relatedRecipesCount: '0',
-    //     };
-
-    //     if(this.state.currentNameField){
-    //         this.state.allCategories.push(newCategory);
-    //         this._resetCurrentFields();
-    //         this._callSubscriber(this.state);
-    //     }
-    //     return;
-    // },
-
-    // changeCurrentNameField(value){
-    //     this.state.currentNameField = value;
-    //     this._callSubscriber(this.state);
-    // },
-
-    // changeCurrentRecipeNameField(value){
-    //     this.state.currentRecipeNameField = value;
-    //     this._callSubscriber(this.state);
-    // },
-
-    // changeCurrentTextField(value){
-    //     this.state.currentTextField = value;
-    //     this._callSubscriber(this.state);
-    // },
-
-    // changeCurrentCategoryField(value){
-    //     this.state.currentCategoryField = value;
-    //     this._callSubscriber(this.state);
-    // },
-
-
     setSubscriber(observer){
         this._callSubscriber = observer;
     },
 };
 
-window.store = store;
+export const recipeNameFieldChangeActionCreator = (text)=> {
+    return ({type:'CHANGE-CURRENT-RECIPE-NAME-FIELD', value: text})
+};
 
+export const categoryFieldChangeActionCreator = (text)=> {
+    return ({type: 'CHANGE-CURRENT-CATEGORY-FIELD', value: text})
+};
+
+export const recipeTextFieldChangeActionCreator = (text)=> {
+    return ({type: 'CHANGE-CURRENT-TEXT-FIELD', value: text});
+};
+
+export const createRecipeActionCreator = ()=> {
+    return ({type: 'CREATE-NEW-RECIPE'});
+}
+
+window.store = store;
 export default store;

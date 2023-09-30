@@ -1,5 +1,8 @@
 import React from "react";
 import classes from "./NewRecipeModal.module.css";
+import { recipeNameFieldChangeActionCreator, categoryFieldChangeActionCreator,
+         recipeTextFieldChangeActionCreator,
+         createRecipeActionCreator } from "../../../redux/store";
 
 function NewRecipeCreate(props) {
 
@@ -15,21 +18,25 @@ function NewRecipeCreate(props) {
 
     const recipeNameFieldOnChange = ()=>{
         let text = recipeNameField.current.value;
-        props.dispatch({type:'CHANGE-CURRENT-RECIPE-NAME-FIELD', value: text});
+        let action = recipeNameFieldChangeActionCreator(text)
+        props.dispatch(action);
     };
 
     const categoryFieldOnChange = ()=> {
         let text = categoryField.current.value;
-        props.dispatch({type: 'CHANGE-CURRENT-CATEGORY-FIELD', value: text});
+        let action = categoryFieldChangeActionCreator(text)
+        props.dispatch(action);
     };
 
     const recipeFieldOnChange = ()=> {
         let text = recipeField.current.value;
-        props.dispatch({type: 'CHANGE-CURRENT-TEXT-FIELD', value: text});
+        let action = recipeTextFieldChangeActionCreator(text)
+        props.dispatch(action);
     };
 
     const createRecipe = ()=> {
-        props.dispatch({type: 'CREATE-NEW-RECIPE'});
+        let action = createRecipeActionCreator() 
+        props.dispatch(action);
     };
 
     return (
