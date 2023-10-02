@@ -14,55 +14,55 @@ function bookeryReducer(state, action) {
         state.currentRecipeNameField = '';
     }; 
 
-    if (action.type === CREATE_NEW_RECIPE) {
-        let newRecipe = {
-            recepieId: Number(state.allRecipes.length) + 1,
-            recipeName: state.currentRecipeNameField,
-            recipeText: state.currentTextField,
-            recipeCategory: state.currentCategoryField,
-            isFavorite: false,
-            thumbnail: '',
-            pictures: [],
-        };
-
-        state.allRecipes.push(newRecipe);
-        state.allCategories.forEach((category)=> {
-            if(category.categoryName === newRecipe.recipeCategory){
-                category.relatedRecipes.push(newRecipe);
-            }
-        })
-        resetCurrentFields();
-        
-    }
-    else if (action.type === CREATE_NEW_CATEGORY) {
-        let newCategory = {
-            categoryId: Number(state.allCategories.length) + 1,
-            categoryName: state.currentNameField.trim(),
-            relatedRecipes: [],
-            relatedRecipesCount: '0',
-        };
-
-        if(state.currentNameField){
-            state.allCategories.push(newCategory);
-            resetCurrentFields();
-        }
-        else {
-            return;
-        }
-    }
+    switch (action.type) {
+        case CREATE_NEW_RECIPE:
+            let newRecipe = {
+                recepieId: Number(state.allRecipes.length) + 1,
+                recipeName: state.currentRecipeNameField,
+                recipeText: state.currentTextField,
+                recipeCategory: state.currentCategoryField,
+                isFavorite: false,
+                thumbnail: '',
+                pictures: [],
+            };
     
-    else if (action.type === CHANGE_CURRENT_NAME_FIELD) {
-        state.currentNameField = action.value;
-    }
-    else if (action.type === CHANGE_CURRENT_RECIPE_NAME_FIELD) {
-        state.currentRecipeNameField = action.value;
-    }
-    else if (action.type === CHANGE_CURRENT_TEXT_FIELD) {
-        state.currentTextField = action.value;
-    }
-    else if (action.type === CHANGE_CURRENT_CATEGORY_FIELD) {
-        state.currentCategoryField = action.value;
-    }
+            state.allRecipes.push(newRecipe);
+            state.allCategories.forEach((category)=> {
+                if(category.categoryName === newRecipe.recipeCategory){
+                    category.relatedRecipes.push(newRecipe);
+                }
+            })
+            resetCurrentFields()
+        break;
+        case CREATE_NEW_CATEGORY:
+            let newCategory = {
+                categoryId: Number(state.allCategories.length) + 1,
+                categoryName: state.currentNameField.trim(),
+                relatedRecipes: [],
+                relatedRecipesCount: '0',
+            };
+    
+            if(state.currentNameField){
+                state.allCategories.push(newCategory);
+                resetCurrentFields();
+            }
+            else {
+                return;
+            }
+        break;
+        case CHANGE_CURRENT_NAME_FIELD:
+            state.currentNameField = action.value
+        break;
+        case CHANGE_CURRENT_RECIPE_NAME_FIELD:
+            state.currentRecipeNameField = action.value
+        break;
+        case CHANGE_CURRENT_TEXT_FIELD:
+            state.currentTextField = action.value
+        break;
+        case CHANGE_CURRENT_CATEGORY_FIELD:
+            state.currentCategoryField = action.value
+        break;
+    };
 
     return state;
 };
