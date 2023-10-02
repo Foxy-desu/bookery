@@ -6,7 +6,7 @@ function Categories(props) {
 
     let categoryItemsArray = props.state.allCategories.map((category)=> {
             
-        let result = (<Category categoryName={category.categoryName} recipeCount={category.relatedRecipesCount} categoryPath={`/categories/${(category.categoryName.toLowerCase().replaceAll(' ', ''))}`}/>)
+        let result = (<Category categoryName={category.categoryName} recipeCount={category.relatedRecipes.length} categoryPath={`/categories/${(category.categoryName.toLowerCase().replaceAll(' ', ''))}`}/>)
         return result;
     });
 

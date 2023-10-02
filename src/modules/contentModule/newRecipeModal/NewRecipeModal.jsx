@@ -66,6 +66,8 @@ function NewRecipeCreate(props) {
                         <textarea className={classes["new-recipe__recipe-text"]} ref={recipeField} value={props.state.currentTextField} onChange={recipeFieldOnChange} placeholder="Here is my lovely dish..."></textarea>
                     </div>
 
+
+
                     <div className={classes["create-recipe-button-wrap"]}>
                         <button className={classes["new-recipe__create-button"]} type="button" onClick={createRecipe}>Create a recipe</button>
                     </div>

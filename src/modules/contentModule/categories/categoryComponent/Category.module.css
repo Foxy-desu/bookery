@@ -17,17 +17,30 @@
 }
 
 .category__card-stats {
-    box-sizing: border-box;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     position: absolute;
     bottom: -1px;
     height: 30%;
     width: 100%;
     backdrop-filter: blur(5px);
     background-color: #ffffff02;
+}
+
+.category__card-stats a {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    padding: 10px;
+    color: #15100c;
+}
+
+.category__card-stats:hover a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.category__card-stats:hover {
+    background-color: #2010038e;
 }
 
 .category-name {
