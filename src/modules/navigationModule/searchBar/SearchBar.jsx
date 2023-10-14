@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "./SearchBar.module.css";
 import { NavLink } from "react-router-dom";
-import { changeCurrentNameFieldActionCreator, createNewCategoryActionCreator } from "../../../redux/store";
 
 function SearchBar(props){
 
@@ -10,21 +9,17 @@ function SearchBar(props){
     
     function inputOnChange(){
         let text = searchBarInput.current.value;
-        let action = changeCurrentNameFieldActionCreator(text);
-        props.dispatch(action);
+        props.inputOnChange(text);
     };
 
     function createCategory(){
-        let action = createNewCategoryActionCreator();
-        props.dispatch(action);
+        props.createCategory();
     };
-
-    debugger;
     return (
     <div className={classes['search-bar']}>
         <div className={classes['search-bar__wrap']}>
             <form className={classes['search-bar__form']}>
-                <input className={classes['search-bar__input']} ref={searchBarInput} value={props.state.currentNameField} onChange={inputOnChange}></input>
+                <input className={classes['search-bar__input']} ref={searchBarInput} value={props.currentNameField} onChange={inputOnChange} required></input>
                 <div className={classes['search-bar__buttons']}>
                     
                     <div>

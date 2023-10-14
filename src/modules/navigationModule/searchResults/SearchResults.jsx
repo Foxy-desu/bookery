@@ -5,11 +5,12 @@ import { NavLink } from "react-router-dom";
 
 function SearchResults(props) {
 
-        let categoriesArray = props.state.allCategories.map((category)=> {
-            
-            let result = (<NavLink  to={`/categories/${(category.categoryName.toLowerCase().replaceAll(' ', ''))}`}><CategoryComponent categoryName={category.categoryName} recipeCount={category.relatedRecipes.length}/></NavLink>)
-            return result
-        })
+    debugger;
+    let categoriesArray = props.categories.map((category) => {
+
+        let result = (<NavLink to={`/categories/${(category.categoryName.toLowerCase().replaceAll(' ', ''))}`}><CategoryComponent categoryName={category.categoryName} recipeCount={category.relatedRecipes.length} /></NavLink>)
+        return result
+    });
 
     return (
         <div className={classes['search-results__block']}>

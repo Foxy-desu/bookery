@@ -1,23 +1,20 @@
 import React from "react";
 import classes from "./Navigation.module.css";
-import SearchBar from "./searchBar/SearchBar";
-import SearchResults from "./searchResults/SearchResults";
+import SearchBarContainer from "./searchBar/SearchBarContainer";
+import SearchResultsContainer from "./searchResults/SearchResultsContainer";
 import ExtraButtons from "./extraButtons/ExtraButtons";
 
-function Navigation(props) {
+function Navigation() {
     return (
         <div className={classes['navigation']}>
             <div className={classes['navigation__search-bar']}>
-                <SearchBar state={props.state}
-                           dispatch={props.dispatch}
-                           changeCurrentNameField={props.changeCurrentNameField}
-                           createNewCategory={props.createNewCategory}/>
+                <SearchBarContainer/>
             </div>
             <div className={classes['navigation__search-results']}>
-                <SearchResults state={props.state}/>
+                <SearchResultsContainer/>
             </div>
             <div className={classes['navigation__extra-buttons']}>
-                <ExtraButtons state={props.state}/>
+                <ExtraButtons/>
             </div>
         </div>
     )

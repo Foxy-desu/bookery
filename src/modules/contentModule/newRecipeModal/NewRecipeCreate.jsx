@@ -1,12 +1,9 @@
 import React from "react";
-import classes from "./NewRecipeModal.module.css";
-import { recipeNameFieldChangeActionCreator, categoryFieldChangeActionCreator,
-         recipeTextFieldChangeActionCreator,
-         createRecipeActionCreator } from "../../../redux/store";
+import classes from "./NewRecipeCreate.module.css";
 
 function NewRecipeCreate(props) {
 
-    let optionArray = props.state.allCategories.map((category, index) => {
+    let optionArray = props.categories.map((category, index) => {
         return (
             <option categoryname={category.categoryName} categoryindex={index}>{category.categoryName}</option>
         )
@@ -18,25 +15,21 @@ function NewRecipeCreate(props) {
 
     const recipeNameFieldOnChange = ()=>{
         let text = recipeNameField.current.value;
-        let action = recipeNameFieldChangeActionCreator(text)
-        props.dispatch(action);
+        props.recipeNameFieldOnChange(text);
     };
 
     const categoryFieldOnChange = ()=> {
         let text = categoryField.current.value;
-        let action = categoryFieldChangeActionCreator(text)
-        props.dispatch(action);
+        props.categoryFieldOnChange(text);
     };
 
     const recipeFieldOnChange = ()=> {
         let text = recipeField.current.value;
-        let action = recipeTextFieldChangeActionCreator(text)
-        props.dispatch(action);
+        props.recipeFieldOnChange(text);
     };
 
     const createRecipe = ()=> {
-        let action = createRecipeActionCreator() 
-        props.dispatch(action);
+        props.createRecipe();
     };
 
     return (
@@ -47,15 +40,15 @@ function NewRecipeCreate(props) {
             </div>
             <div className={classes["new-recipe__recipe-info-wrap"]}>
                 <div className={classes["new-recipe__recipe-info"]}>
-
+                
                     <div className={classes["name-wrap"]}>
                         <p className={classes["new-recipe__name-label"]}>Give your pretty recipe a name</p>
-                        <input className={classes["new-recipe__recipe-name"]} ref={recipeNameField} value={props.state.currentRecipeNameField} onChange={recipeNameFieldOnChange} type="text" />
+                        <input className={classes["new-recipe__recipe-name"]} ref={recipeNameField} value={props.currentRecipeName} onChange={recipeNameFieldOnChange} type="text" />
                     </div>
 
                     <div className={classes["category-wrap"]}>
                         <p className={classes["new-recipe__category-label"]}>Select the right category for it</p>
-                        <select className={classes["new-recipe__category"]} ref={categoryField} value={props.state.currentCategoryField} onChange={categoryFieldOnChange} >
+                        <select className={classes["new-recipe__category"]} ref={categoryField} value={props.currentCategoryField} onChange={categoryFieldOnChange} >
                             <option hidden>Choose a category</option>
                             {optionArray}
                         </select>
@@ -63,7 +56,7 @@ function NewRecipeCreate(props) {
 
                     <div className={classes["recipe-text-wrap"]}>
                         <p className={classes["new-recipe__recipe-text-label"]}>Put it down here</p>
-                        <textarea className={classes["new-recipe__recipe-text"]} ref={recipeField} value={props.state.currentTextField} onChange={recipeFieldOnChange} placeholder="Here is my lovely dish..."></textarea>
+                        <textarea className={classes["new-recipe__recipe-text"]} ref={recipeField} value={props.currentTextField} onChange={recipeFieldOnChange} placeholder="Here is my lovely dish..."></textarea>
                     </div>
 
 
@@ -71,7 +64,7 @@ function NewRecipeCreate(props) {
                     <div className={classes["create-recipe-button-wrap"]}>
                         <button className={classes["new-recipe__create-button"]} type="button" onClick={createRecipe}>Create a recipe</button>
                     </div>
-
+ 
 
                 </div>
                 <div className={classes["new-recipe__recipe-photo"]}>
