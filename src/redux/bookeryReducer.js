@@ -84,11 +84,11 @@ const initialState = {
 
 function mainReducer(state = initialState, action) {
 
-    const resetCurrentFields = () => {
-        state.currentTextField = '';
-        state.currentNameField = '';
-        state.currentCategoryField = '';
-        state.currentRecipeNameField = '';
+    const resetCurrentFields = (stateCopy) => {
+        stateCopy.currentTextField = '';
+        stateCopy.currentNameField = '';
+        stateCopy.currentCategoryField = '';
+        stateCopy.currentRecipeNameField = '';
     };
 
     switch (action.type) {
@@ -103,17 +103,20 @@ function mainReducer(state = initialState, action) {
                 pictures: [],
             };
 
-            if (state.currentRecipeNameField && state.currentCategoryField) {
-                state.allRecipes.push(newRecipe);
-                state.allCategories.forEach((category) => {
+            const stateCopy = JSON.parse(JSON.stringify(state));
+
+            if (stateCopy.currentRecipeNameField && state.currentCategoryField) {
+                
+                stateCopy.allRecipes.push(newRecipe);
+                stateCopy.allCategories.forEach((category) => {
 
                     if (category.categoryName === newRecipe.recipeCategory) {
                         category.relatedRecipes.push(newRecipe);
                     }
                 })
-                resetCurrentFields();
+                resetCurrentFields(stateCopy);
             }
-            return state;
+            return stateCopy;
         };
         case CREATE_NEW_CATEGORY: {
             let newCategory = {
@@ -123,31 +126,38 @@ function mainReducer(state = initialState, action) {
                 relatedRecipesCount: '0',
             };
 
-            if (state.currentNameField) {
-                state.allCategories.push(newCategory);
-                resetCurrentFields();
+            const stateCopy = {
+                ...state,
+                allRecipes: [
+                    ...state.allRecipes,
+                ],
+                allCategories: [
+                    ...state.allCategories,
+                    
+                ],
+            };
+
+            if (stateCopy.currentNameField) {
+                stateCopy.allCategories.push(newCategory);
+                resetCurrentFields(stateCopy);
             }
             else {
 
-                return state;
+                return stateCopy;
             }
-            return state;
+            return stateCopy;
         }
         case CHANGE_CURRENT_NAME_FIELD: {
-            state.currentNameField = action.value
-            return state;
+            return {...state, currentNameField: action.value};
         }
         case CHANGE_CURRENT_RECIPE_NAME_FIELD: {
-            state.currentRecipeNameField = action.value
-            return state;
+            return {...state, currentRecipeNameField: action.value};
         }
         case CHANGE_CURRENT_TEXT_FIELD: {
-            state.currentTextField = action.value
-            return state;
+            return {...state, currentTextField: action.value};
         }
         case CHANGE_CURRENT_CATEGORY_FIELD: {
-            state.currentCategoryField = action.value
-            return state;
+            return {...state, currentCategoryField: action.value};
         }
         default: 
             return state;
