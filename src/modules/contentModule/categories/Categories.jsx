@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "./Categories.module.css";
-import Category from "./categoryComponent/Category";
+import Category from "./categoryComponent/Category"
 
 function Categories(props) {
 
-    let categoryItemsArray = props.state.allCategories.map((category)=> {
+    let categoryItemsArray = props.categories.map((category)=> {
             
         let result = (<Category categoryName={category.categoryName} recipeCount={category.relatedRecipes.length} categoryPath={`/categories/${(category.categoryName.toLowerCase().replaceAll(' ', ''))}`}/>)
         return result;

@@ -1,5 +1,5 @@
 import { combineReducers, legacy_createStore as createStore} from "redux";
-import mainReducer from "./bookeryReducer";
+import mainReducer from "./mainReducer";
 
 let reducers = combineReducers({
     mainReducer: mainReducer, 

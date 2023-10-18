@@ -1,4 +1,4 @@
-import bookeryReducer from "./bookeryReducer";
+import mainReducer from "./mainReducer";
 
 const CHANGE_CURRENT_RECIPE_NAME_FIELD = 'CHANGE-CURRENT-RECIPE-NAME-FIELD';
 const CHANGE_CURRENT_CATEGORY_FIELD = 'CHANGE-CURRENT-CATEGORY-FIELD';
@@ -92,7 +92,7 @@ const store = {
 
     dispatch(action){
 
-        this.state = bookeryReducer(this.state, action);
+        this.state = mainReducer(this.state, action);
 
         // if (action.type === CREATE_NEW_RECIPE) {
         //     let newRecipe = {
